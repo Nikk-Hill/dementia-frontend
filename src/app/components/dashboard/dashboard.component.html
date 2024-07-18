@@ -1,0 +1,15 @@
+<div class="main-div">
+  <nav class="dashboard-nav">
+    <div class="nav-item" (click)="navigateToRestaurant()" [class.active]="isRestaurantActive">
+      Restaurant
+    </div>
+    <div class="nav-item" (click)="navigateToMyBookings()" [class.active]="isMyBookingsActive">
+      My Bookings
+    </div>
+    <div class="nav-item logout" (click)="signOut()">
+      <fa-icon [icon]="signOutIcon"></fa-icon>
+    </div>
+  </nav>
+  <app-restaurant *ngIf="isRestaurantActive"></app-restaurant>
+  <app-my-bookings *ngIf="isMyBookingsActive"></app-my-bookings>
+</div>
