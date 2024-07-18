@@ -6,6 +6,7 @@ import { RestaurantComponent } from './components/restaurant/restaurant.componen
 import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CommunityComponent } from './components/community/community.component';
 
 export const routes: Routes = [
   {
@@ -40,6 +41,10 @@ export const routes: Routes = [
       {
         path: 'my-bookings',
         component: MyBookingsComponent
+      },
+      {
+        path: 'community',
+        component: CommunityComponent
       }
     ]
   },

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
     selector: 'app-root',
@@ -9,6 +10,7 @@ import { RouterOutlet } from '@angular/router';
     styleUrl: './app.component.scss',
   imports: [
     RouterOutlet,
+    HttpClientModule
   ]
 })
 export class AppComponent {
