@@ -1,10 +1,11 @@
 import { Component, OnInit, isStandalone } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgbDropdownModule, NgbNavModule, NgbPopoverModule } from '@ng-bootstrap/ng-bootstrap';
 import { RestaurantComponent } from "../restaurant/restaurant.component";
 import { MyBookingsComponent } from "../my-bookings/my-bookings.component";
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faSignOut } from '@fortawesome/free-solid-svg-icons';
+import { faBell, faUser } from '@fortawesome/free-solid-svg-icons';
 import { JwtTokenService } from '../../services/jwt-token.service';
 import { Store } from '@ngrx/store';
 import { getAllBookingsStartedAction } from '../../store/actions/user-booking.actions';
@@ -19,14 +20,18 @@ import { getAllRestaurantsStartedAction } from '../../store/actions/restaurant.a
       CommonModule,
       RestaurantComponent, 
       MyBookingsComponent,
-      FontAwesomeModule
+      FontAwesomeModule,
+      NgbNavModule,
+      NgbDropdownModule,
+      NgbPopoverModule
     ]
 })
 export class DashboardComponent {
 
   isRestaurantActive: boolean = false;
   isMyBookingsActive: boolean = false;
-  signOutIcon = faSignOut;
+  notificationIcon = faBell;
+  userIcon = faUser;
 
   constructor(private router: Router, 
     private jwtTokenService: JwtTokenService,

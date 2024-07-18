@@ -1,15 +1,35 @@
 <div class="main-div">
-  <nav class="dashboard-nav">
-    <div class="nav-item" (click)="navigateToRestaurant()" [class.active]="isRestaurantActive">
-      Restaurant
-    </div>
-    <div class="nav-item" (click)="navigateToMyBookings()" [class.active]="isMyBookingsActive">
-      My Bookings
-    </div>
-    <div class="nav-item logout" (click)="signOut()">
-      <fa-icon [icon]="signOutIcon"></fa-icon>
-    </div>
-  </nav>
-  <app-restaurant *ngIf="isRestaurantActive"></app-restaurant>
-  <app-my-bookings *ngIf="isMyBookingsActive"></app-my-bookings>
+  <ul ngbNav #nav="ngbNav" class="nav-pills dashboard-nav">
+    <li ngbDropdown class="nav-item">
+      <button type="button" class="nav-link" ngbDropdownToggle>
+        <fa-icon [icon]="userIcon"></fa-icon>
+      </button>
+      <div ngbDropdownMenu>
+        <button ngbDropdownItem>dropdown item</button>
+      </div>
+    </li>
+    <li ngbDropdown class="nav-item ms-auto">
+      <button type="button" class="nav-link" ngbDropdownToggle>A</button>
+      <div ngbDropdownMenu>
+        <button ngbDropdownItem>N</button>
+        <button ngbDropdownItem>E</button>
+      </div>
+    </li>
+    <li class="nav-item">
+      <button
+        type="button"
+        class="nav-link btn btn-outline-secondary"
+        placement="bottom-right"
+        ngbPopover="Vivamus sagittis lacus vel augue laoreet rutrum faucibus."
+        popoverTitle="Notifications"
+      >
+        <fa-icon [icon]="notificationIcon"></fa-icon>
+      </button>
+    </li>
+    <li ngbNavItem>
+      <button ngbNavLink>Community</button>
+      <ng-template ngbNavContent>Community</ng-template>
+    </li>
+  </ul>
+  <div [ngbNavOutlet]="nav"></div>
 </div>

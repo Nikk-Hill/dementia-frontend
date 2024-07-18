@@ -4,40 +4,15 @@
   width: 100vw;
 }
 
-.dashboard-nav {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+.dashboard-nav, ::ng-deep .popover-header {
   background-color: #124E66; 
-  padding: 0px 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.nav-item {
-  cursor: pointer;
+.nav-item, .nav-link {
   color: #fff;
-  padding: 20px; 
-  margin-top: 0;
-  margin-bottom: 0;
-  // margin-right: 10px;
-  transition: background-color 0.3s ease, color 0.3s ease; 
   font-weight: bold;
-  font-family: Arial, sans-serif;
 }
 
-.nav-item.active {
+.nav-link.active, .nav-pills .show > .nav-link {
   background-color: #748D92;
-  font-weight: bold; 
-  border-radius: 5%;
-}
-
-.nav-item:hover {
-  background-color: #748D92; 
-  border-radius: 5%;
-  transform: scale(1.05);
-}
-
-.nav-item:last-child {
-  margin-left: auto;
-  margin-right: 20px;
 }
