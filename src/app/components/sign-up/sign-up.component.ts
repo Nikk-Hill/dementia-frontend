@@ -24,7 +24,6 @@ export class SignUpComponent implements OnInit {
   emailId: string = '';
   password: string = '';
   phoneNumber: string = '';
-  role: string = 'CUSTOMER';
   isSubmitEnabled: boolean = false;
 
   ngOnInit(): void {
@@ -44,14 +43,13 @@ export class SignUpComponent implements OnInit {
       emailId: this.emailId,
       password: this.password,
       phoneNumber: this.phoneNumber,
-      role: this.role as unknown as RoleType,
     };
     console.log(userDetails);
     this.store.dispatch(signUpInitiatedAction({ userDetails }));
   }
 
   onChange() {
-    if(this.name != '' && this.emailId != '' && this.password != '' && this.phoneNumber != '' && this.role != '') {
+    if(this.name != '' && this.emailId != '' && this.password != '' && this.phoneNumber != '') {
       this.isSubmitEnabled = true;
     }
   }
@@ -61,7 +59,6 @@ export class SignUpComponent implements OnInit {
     this.emailId = '';
     this.password = '';
     this.phoneNumber = '';
-    this.role = 'CUSTOMER';
     this.isSubmitEnabled = false;
     this.router.navigate(['/sign-in']);
   }

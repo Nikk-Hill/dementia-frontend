@@ -15,7 +15,7 @@ export class BookingRequestService {
 
   createBooking(bookingRequest: BookingRequest): Observable<void> {
     console.log('Service called for creating booking');
-    const url = `${apiUrl}/booking-request/create`;
+    const url = `${apiUrl}/booking/create`;
     const requestHeaders = this.httpHeaderUtil.getHeadersWithBearerToken();
     return this.http.post<void>(url, bookingRequest, { headers: requestHeaders });
   }

@@ -1,12 +1,13 @@
 import { Routes } from '@angular/router';
-import { TableBookingComponent } from './components/table-booking/table-booking.component';
+import { SlotBookingComponent } from './components/slot-booking/slot-booking.component';
 import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
-import { RestaurantComponent } from './components/restaurant/restaurant.component';
+import { DoctorComponent } from './components/doctor/doctor.component';
 import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CommunityComponent } from './components/community/community.component';
+import { NurseComponent } from './components/nurse/nurse.component';
 
 export const routes: Routes = [
   {
@@ -24,17 +25,28 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'restaurants',
+        redirectTo: 'doctor',
         pathMatch: 'full'
       },
       {
-        path: 'restaurants',
-        component: RestaurantComponent,
+        path: 'doctor',
+        component: DoctorComponent,
         children: [
           {
-            path: 'table-booking',
+            path: 'slot-booking',
             canActivate: [AuthGuard],
-            component: TableBookingComponent
+            component: SlotBookingComponent
+          }
+        ]
+      },
+      {
+        path: 'nurse',
+        component: NurseComponent,
+        children: [
+          {
+            path: 'slot-booking',
+            canActivate: [AuthGuard],
+            component: SlotBookingComponent
           }
         ]
       },
