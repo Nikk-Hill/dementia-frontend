@@ -26,7 +26,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     NgxMaterialTimepickerModule,
     MatSelectModule,
-    MatIconModule 
+    MatIconModule
   ]
 })
 export class MedicationReminderComponent{

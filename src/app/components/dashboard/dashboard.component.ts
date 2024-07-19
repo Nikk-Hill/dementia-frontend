@@ -8,7 +8,6 @@ import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { JwtTokenService } from '../../services/jwt-token.service';
 import { Store } from '@ngrx/store';
 import { getAllBookingsStartedAction } from '../../store/actions/user-booking.actions';
-import { getAllRestaurantsStartedAction } from '../../store/actions/restaurant.actions';
 import { getAllRemindersStartedAction } from '../../store/actions/reminder.actions';
 import { MedicationReminderComponent } from '../../medication-reminder/medication-reminder.component';
 import { getAllExpertsStartedAction } from '../../store/actions/expert.actions';
@@ -28,7 +27,7 @@ import { NurseComponent } from '../nurse/nurse.component';
       DoctorComponent, 
       MyBookingsComponent,
       FontAwesomeModule,
-      MedicationReminderComponent
+      MedicationReminderComponent,
       CommunityComponent,
       NurseComponent
     ]
@@ -57,8 +56,6 @@ export class DashboardComponent {
     this.isNurseActive=false;
     this.isMyBookingsActive=false;
     this.isReminderActive=false;
-    this.store.dispatch(getAllRestaurantsStartedAction());
-    this.router.navigate(['dashboard','restaurants']);
     this.isCommunityActive=false;
     this.store.dispatch(getAllExpertsStartedAction());
     this.router.navigate(['dashboard','doctor']);
@@ -69,13 +66,13 @@ export class DashboardComponent {
     this.isDoctorActive=false;
     this.isMyBookingsActive=false;
     this.isCommunityActive=false;
+    this.isReminderActive=false;
     this.store.dispatch(getAllNursesStartedAction());
     this.router.navigate(['dashboard','nurse']);
   }
 
   navigateToMyBookings(): void {
     this.isMyBookingsActive=true;
-    this.isRestaurantActive=false;
     this.isReminderActive=false;
     this.isDoctorActive=false;
     this.isNurseActive=false;
@@ -84,18 +81,24 @@ export class DashboardComponent {
     this.router.navigate(['dashboard','my-bookings']);
   }
 
+  navigateToCommunity(): void {
+    this.isMyBookingsActive=false;
+    this.isReminderActive=false;
+    this.isDoctorActive=false;
+    this.isNurseActive=false;
+    this.isCommunityActive=true;
+    this.store.dispatch(getCommunityStartedAction());
+    this.router.navigate(['dashboard','community']);
+  }
+
   navigateToReminder(): void {
-    this.isRestaurantActive=false;
     this.isMyBookingsActive=false;
     this.isReminderActive=true;
     this.store.dispatch(getAllRemindersStartedAction());
     this.router.navigate(['dashboard','medicine-reminder']);
-  navigateToCommunity(): void {
     this.isDoctorActive=false;
-    this.isMyBookingsActive=false;
+    this.isCommunityActive=false;
     this.isNurseActive=false;
-    this.isCommunityActive=true;
-    this.router.navigate(['dashboard','community']);
   }
 
   signOut() {

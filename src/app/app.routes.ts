@@ -59,6 +59,7 @@ export const routes: Routes = [
         path: 'medicine-reminder',
         component: MedicationReminderComponent
       },
+      {
         path: 'community',
         component: CommunityComponent
       }
