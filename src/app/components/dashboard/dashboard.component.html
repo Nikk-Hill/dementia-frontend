@@ -6,10 +6,14 @@
     <div class="nav-item" (click)="navigateToMyBookings()" [class.active]="isMyBookingsActive">
       My Bookings
     </div>
+    <div class="nav-item" (click)="navigateToReminder()" [class.active]="isReminderActive">
+      Reminder
+    </div>
     <div class="nav-item logout" (click)="signOut()">
       <fa-icon [icon]="signOutIcon"></fa-icon>
     </div>
   </nav>
   <app-restaurant *ngIf="isRestaurantActive"></app-restaurant>
   <app-my-bookings *ngIf="isMyBookingsActive"></app-my-bookings>
+  <app-medication-reminder *ngIf="isReminderActive"></app-medication-reminder>
 </div>
