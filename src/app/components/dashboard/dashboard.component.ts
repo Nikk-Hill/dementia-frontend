@@ -8,6 +8,9 @@ import { faSignOut } from '@fortawesome/free-solid-svg-icons';
 import { JwtTokenService } from '../../services/jwt-token.service';
 import { Store } from '@ngrx/store';
 import { getAllBookingsStartedAction } from '../../store/actions/user-booking.actions';
+import { getAllRestaurantsStartedAction } from '../../store/actions/restaurant.actions';
+import { getAllRemindersStartedAction } from '../../store/actions/reminder.actions';
+import { MedicationReminderComponent } from '../../medication-reminder/medication-reminder.component';
 import { getAllExpertsStartedAction } from '../../store/actions/expert.actions';
 import { getCommunityStartedAction } from '../../store/actions/community.actions';
 import { CommunityComponent } from '../community/community.component';
@@ -19,11 +22,13 @@ import { NurseComponent } from '../nurse/nurse.component';
     standalone: true,
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
+    
     imports: [
       CommonModule,
       DoctorComponent, 
       MyBookingsComponent,
       FontAwesomeModule,
+      MedicationReminderComponent
       CommunityComponent,
       NurseComponent
     ]
@@ -33,6 +38,7 @@ export class DashboardComponent {
   isDoctorActive: boolean = false;
   isNurseActive: boolean = false;
   isMyBookingsActive: boolean = false;
+  isReminderActive: boolean = false;
   isCommunityActive: boolean = false;
   signOutIcon = faSignOut;
 
@@ -50,6 +56,9 @@ export class DashboardComponent {
     this.isDoctorActive=true;
     this.isNurseActive=false;
     this.isMyBookingsActive=false;
+    this.isReminderActive=false;
+    this.store.dispatch(getAllRestaurantsStartedAction());
+    this.router.navigate(['dashboard','restaurants']);
     this.isCommunityActive=false;
     this.store.dispatch(getAllExpertsStartedAction());
     this.router.navigate(['dashboard','doctor']);
@@ -66,6 +75,8 @@ export class DashboardComponent {
 
   navigateToMyBookings(): void {
     this.isMyBookingsActive=true;
+    this.isRestaurantActive=false;
+    this.isReminderActive=false;
     this.isDoctorActive=false;
     this.isNurseActive=false;
     this.isCommunityActive=false;
@@ -73,6 +84,12 @@ export class DashboardComponent {
     this.router.navigate(['dashboard','my-bookings']);
   }
 
+  navigateToReminder(): void {
+    this.isRestaurantActive=false;
+    this.isMyBookingsActive=false;
+    this.isReminderActive=true;
+    this.store.dispatch(getAllRemindersStartedAction());
+    this.router.navigate(['dashboard','medicine-reminder']);
   navigateToCommunity(): void {
     this.isDoctorActive=false;
     this.isMyBookingsActive=false;
