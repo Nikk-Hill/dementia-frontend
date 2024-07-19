@@ -1,0 +1,24 @@
+<div class="overlay d-flex flex-column" *ngIf="bookASlot">
+  
+    <app-slot-booking class="table-booking" [expert]="chosenExpert">
+    </app-slot-booking>
+</div>
+
+<div class="search-container">
+  <div class="search-bar">
+    <input type="text" placeholder="Search by name" [(ngModel)]="searchText"
+      (input)="filterExperts()" />
+  </div>
+  <div class="search-bar">
+    <input type="text" placeholder="Search by location" [(ngModel)]="searchLocation"
+      (input)="filterExperts()" />
+  </div>
+</div>
+
+<div class="restaurant-cards">
+  <div *ngFor="let expert of filteredExperts" class="restaurant-card">
+    <h3>{{ expert.expertName }}</h3>
+    <p>Location: {{ expert.location }}</p>
+    <button (click)="bookSlot(expert)">Book a Slot</button>
+  </div>
+</div>
