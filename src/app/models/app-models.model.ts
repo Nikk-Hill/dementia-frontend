@@ -51,6 +51,12 @@ export interface UserBooking {
   daysRemainingTillBooking: number;
 }
 
+export interface Reminder {
+  bookingId: number;
+  morningTime: string;
+  eveningTime: string;
+}
+
 export enum ActionStatus {
   'NOT_STARTED',
   'PENDING',

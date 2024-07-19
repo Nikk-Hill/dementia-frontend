@@ -9,6 +9,9 @@
     <div class="nav-item" (click)="navigateToMyBookings()" [class.active]="isMyBookingsActive">
       My Bookings
     </div>
+    <div class="nav-item" (click)="navigateToReminder()" [class.active]="isReminderActive">
+      Reminder
+      </div>
     <div class="nav-item" (click)="navigateToCommunity()" [class.active]="isCommunityActive">
       Community
     </div>
@@ -19,6 +22,7 @@
   <app-doctor *ngIf="isDoctorActive"></app-doctor>
   <app-nurse *ngIf="isNurseActive"></app-nurse>
   <app-my-bookings *ngIf="isMyBookingsActive"></app-my-bookings>
+  <app-medication-reminder *ngIf="isReminderActive"></app-medication-reminder>
   <app-community *ngIf="isCommunityActive"></app-community>
   <app-chat></app-chat>
 </div>

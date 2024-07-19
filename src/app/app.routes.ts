@@ -7,6 +7,7 @@ import { MyBookingsComponent } from './components/my-bookings/my-bookings.compon
 import { ChatComponent } from './components/chat/chat.component';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { MedicationReminderComponent } from './medication-reminder/medication-reminder.component';
 import { CommunityComponent } from './components/community/community.component';
 import { NurseComponent } from './components/nurse/nurse.component';
 
@@ -54,6 +55,10 @@ export const routes: Routes = [
       {
         path: 'my-bookings',
         component: MyBookingsComponent
+      },
+      {
+        path: 'medicine-reminder',
+        component: MedicationReminderComponent
       },
       {
         path: 'chat',
