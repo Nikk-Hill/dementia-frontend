@@ -1,6 +1,6 @@
 import { Observable } from "rxjs";
-import { BookingRequest } from "../models/app-models.model";
-import { HttpClient } from "@angular/common/http";
+import { BookingRequest as FetchingRequest } from "../models/app-models.model";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environemnt } from "../environment";
 import { HttpHeaderUtil } from "../util/http-header-util.service";
@@ -8,15 +8,18 @@ import { HttpHeaderUtil } from "../util/http-header-util.service";
 const { apiUrl } = environemnt;
 
 @Injectable()
-export class BookingRequestService {
+export class SlotFetchingService {
   constructor( private http: HttpClient, 
     private httpHeaderUtil: HttpHeaderUtil
   ) { }
 
-  createBooking(bookingRequest: BookingRequest): Observable<void> {
+  fetchSlots(expertId: number, date: string): Observable<string[]> {
     console.log('Service called for creating booking');
-    const url = `${apiUrl}/booking/create`;
+    const url = `${apiUrl}/expert-time-slots`;
+    let params = new HttpParams()
+    .set('expertId', expertId)
+    .set('date', date);
     const requestHeaders = this.httpHeaderUtil.getHeadersWithBearerToken();
-    return this.http.post<void>(url, bookingRequest, { headers: requestHeaders });
+    return this.http.get<string[]>(url, { params , headers: requestHeaders });
   }
 }

@@ -10,7 +10,7 @@ import { signInReducer } from '../../store/reducers/sign-in';
 import { selectSignInResponse } from '../../store/selectors/sign-in.selectors';
 import { CommonModule } from '@angular/common';
 import { JwtTokenService } from '../../services/jwt-token.service';
-import { getAllRestaurantsStartedAction } from '../../store/actions/restaurant.actions';
+import { getAllExpertsStartedAction } from '../../store/actions/expert.actions';
 
 @Component({
   selector: 'app-sign-in',
@@ -27,7 +27,6 @@ export class SignInComponent implements OnInit {
   readonly signInResponse$ = this.store.select(selectSignInResponse);
   emailId: string = '';
   password: string = '';
-  role: string = 'CUSTOMER';
   isSubmitEnabled: boolean = false;
 
   ngOnInit(): void {
@@ -41,7 +40,7 @@ export class SignInComponent implements OnInit {
   }
 
   onChange() {
-    if(this.emailId != '' && this.password != '' && this.role != null) {
+    if(this.emailId != '' && this.password != '') {
       this.isSubmitEnabled = true;
     }
   }
@@ -50,14 +49,13 @@ export class SignInComponent implements OnInit {
     console.log("Sign In successful for " + signInResponse.userEmailId);
     this.jwtTokenService.storeJwtTokenToLocalStorage(signInResponse.jwtToken);
     this.router.navigate(['dashboard']);
-    this.store.dispatch(getAllRestaurantsStartedAction());
+    this.store.dispatch(getAllExpertsStartedAction());
   }
 
   onSubmit() {
     const userDetails: UserDetails = {
       emailId: this.emailId,
       password: this.password,
-      role: this.role as unknown as RoleType,
       phoneNumber: '',
       name: ''
     };
