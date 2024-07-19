@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCardModule } from '@angular/material/card';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
     selector: 'app-root',
@@ -21,6 +22,7 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     MatSnackBarModule,
     MatCardModule,
     NgxMaterialTimepickerModule
+    HttpClientModule
   ]
 })
 export class AppComponent {

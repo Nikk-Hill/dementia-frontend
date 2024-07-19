@@ -1,0 +1,31 @@
+<div class="community-container">
+    <h1>Community Posts</h1>
+    <div *ngIf="posts.length === 0" class="no-posts">No posts available.</div>
+    <div *ngFor="let post of posts; let i = index" [attr.id]="'post-' + i" class="post">
+      <div class="post-header">
+        <h2 class="post-title">{{ post.title }}</h2>
+        <span class="post-date">{{ post.date }}</span>
+      </div>
+      <p class="post-content">{{ post.content }}</p>
+      <p class="post-author"><strong>Author:</strong> {{ post.author }}</p>
+      <div class="post-buttons">
+        <button (click)="react(post, 'thumbsUp')" class="reaction-button">
+          👍 <span>{{ post.reactions.thumbsUp }}</span>
+        </button>
+        <button (click)="toggleComments(i)" class="comments-toggle-button">
+          Comments ({{ post.comments.length }})
+        </button>
+      </div>
+      <div *ngIf="showComments[i]" class="comments">
+        <div *ngFor="let comment of post.comments" class="comment">
+          <p class="comment-content"><strong>{{ comment.author }}</strong>: {{ comment.content }} - {{ comment.date }}</p>
+        </div>
+        <div class="add-comment">
+          <input [(ngModel)]="newComment[i]" placeholder="Add a comment..." />
+          <button (click)="addComment(post, i)">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

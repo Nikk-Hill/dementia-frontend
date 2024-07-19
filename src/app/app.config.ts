@@ -17,12 +17,17 @@ import { UserBookingsService } from './services/user-bookings.service';
 import { HttpHeaderUtil } from './util/http-header-util.service';
 import { UserBookingEffects } from './store/effects/user-booking.effects';
 import { userBookingReducer } from './store/reducers/user-booking';
-import { RestaurantService } from './services/restaurants.service';
-import { restaurantReducer } from './store/reducers/restaurant';
-import { RestaurantEffects } from './store/effects/restaurant.effects';
+import { ExpertService } from './services/experts.service';
+import { expertReducer } from './store/reducers/expert';
+import { ExpertEffects } from './store/effects/expert.effects';
 import { BookingRequestService } from './services/booking-request.service';
 import { bookingRequestReducer } from './store/reducers/booking-request';
 import { BookingRequestEffects } from './store/effects/booking-request.effects';
+import { nurseReducer } from './store/reducers/nurse';
+import { NurseEffects } from './store/effects/nurse.effects';
+import { SlotFetchingService } from './services/slot-fetching.service';
+import { slotFetchingReducer } from './store/reducers/slot-fetching';
+import { SlotFetchingEffects } from './store/effects/slot-fetching.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -34,25 +39,30 @@ export const appConfig: ApplicationConfig = {
     SignUpService,
     JwtTokenService,
     UserBookingsService,
-    RestaurantService,
+    ExpertService,
     BookingRequestService,
     HttpHeaderUtil,
     HttpClient,
+    SlotFetchingService,
     provideHttpClient(),
     importProvidersFrom(
       StoreModule.forRoot({
         'sign-in': signInReducer,
         'sign-up': signUpReducer,
         'user-booking': userBookingReducer,
-        'restaurants': restaurantReducer,
-        'booking-request': bookingRequestReducer
+        'experts': expertReducer,
+        'nurses': nurseReducer,
+        'booking-request': bookingRequestReducer,
+        'slot-fetching': slotFetchingReducer
       }),
       EffectsModule.forRoot([
         SignInEffects,
         SignUpEffects,
         UserBookingEffects,
-        RestaurantEffects,
-        BookingRequestEffects
+        ExpertEffects,
+        NurseEffects,
+        BookingRequestEffects,
+        SlotFetchingEffects
       ]),
     )
   ]

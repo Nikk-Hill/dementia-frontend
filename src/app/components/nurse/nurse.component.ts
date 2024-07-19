@@ -1,42 +1,42 @@
 import { Component, OnInit } from '@angular/core';
-import { ActionStatus, Restaurant } from '../../models/app-models.model';
+import { ActionStatus, Expert } from '../../models/app-models.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, NgFor } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { selectRestaurants, selectRestaurantState } from '../../store/selectors/restaurant.selector';
 import { Router } from '@angular/router';
-import { TableBookingComponent } from '../table-booking/table-booking.component';
+import { SlotBookingComponent } from '../slot-booking/slot-booking.component';
 import { selectBookingRequestStatus, selectBookingRequestState } from '../../store/selectors/booking-request.selector';
+import { selectNurses } from '../../store/selectors/nurse.selector';
 
 @Component({
-  selector: 'app-restaurant',
+  selector: 'app-nurse',
   standalone: true,
   imports: [
     FormsModule,
     NgFor,
     CommonModule,
-    TableBookingComponent
+    SlotBookingComponent
   ],
-  templateUrl: './restaurant.component.html',
-  styleUrls: ['./restaurant.component.scss']
+  templateUrl: './nurse.component.html',
+  styleUrls: ['./nurse.component.scss']
 })
-export class RestaurantComponent implements OnInit {
-  readonly restaurants$ = this.store.select(selectRestaurants);
+export class NurseComponent implements OnInit {
+  readonly nurses$ = this.store.select(selectNurses);
   readonly bookingRequestStatus$ = this.store.select(selectBookingRequestStatus);
-  chosenRestaurant: Restaurant = {} as Restaurant;
-  restaurants: Restaurant[] = [];
-  filteredRestaurants: Restaurant[] = [];
+  chosenNurse: Expert = {} as Expert;
+  nurses: Expert[] = [];
+  filteredNurses: Expert[] = [];
   searchText: string = '';
   searchLocation: string = '';
-  bookATable: boolean = false;
+  bookASlot: boolean = false;
 
   constructor(private store: Store, private router: Router) {}
 
   ngOnInit(): void {
-    this.restaurants$.subscribe(restaurants => {
-      console.log(restaurants);
-        this.restaurants = restaurants;
-        this.filteredRestaurants = this.restaurants;
+    this.nurses$.subscribe(nurses => {
+      console.log(nurses);
+        this.nurses = nurses;
+        this.filteredNurses = this.nurses;
         /**this.restaurants = [
           { restaurantId: 1, restaurantName: 'Italian Bistro', registrationDate: new Date('2020-01-01'), cuisines: ['Italian'], location: 'New York', timeSlots: ['12-13','13-14','15-16'] },
           { restaurantId: 2, restaurantName: 'Sushi Place', registrationDate: new Date('2019-05-20'), cuisines: ['Japanese'], location: 'Los Angeles', timeSlots: ['12-13','13-14','15-16']  },
@@ -49,28 +49,28 @@ export class RestaurantComponent implements OnInit {
     this.bookingRequestStatus$.subscribe(requestStatus => {
       if(requestStatus == ActionStatus.COMPLETED) {
         // alert('Booking was successful');
-        this.bookATable = false;
-        this.chosenRestaurant = {} as Restaurant;
+        this.bookASlot = false;
+        this.chosenNurse = {} as Expert;
       }
     })
 
   }
 
-  filterRestaurants(): void {
-    this.filteredRestaurants = this.restaurants.filter(restaurant => 
-      restaurant.restaurantName.toLowerCase().includes(this.searchText.toLowerCase()) &&
+  filterNurses(): void {
+    this.filteredNurses = this.nurses.filter(restaurant => 
+      restaurant.expertName.toLowerCase().includes(this.searchText.toLowerCase()) &&
       restaurant.location.toLowerCase().includes(this.searchLocation.toLowerCase())
     );
   }
 
-  bookTable(restaurant: Restaurant): void {
-    this.bookATable = true;
-    this.chosenRestaurant = restaurant;
+  bookSlot(expert: Expert): void {
+    this.bookASlot = true;
+    this.chosenNurse = expert;
   }
 
   closeModal() {
-    this.bookATable = false;
-    this.chosenRestaurant = {} as Restaurant;
+    this.bookASlot = false;
+    this.chosenNurse = {} as Expert;
   }
   
 }

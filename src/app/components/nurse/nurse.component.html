@@ -1,0 +1,22 @@
+<div class="overlay" *ngIf="bookASlot">
+    <app-slot-booking class="table-booking" [expert]="chosenNurse"></app-slot-booking>
+</div>
+
+<div class="search-container">
+  <div class="search-bar">
+    <input type="text" placeholder="Search by name" [(ngModel)]="searchText"
+      (input)="filterNurses()" />
+  </div>
+  <div class="search-bar">
+    <input type="text" placeholder="Search by location" [(ngModel)]="searchLocation"
+      (input)="filterNurses()" />
+  </div>
+</div>
+
+<div class="restaurant-cards">
+  <div *ngFor="let nurse of filteredNurses" class="restaurant-card">
+    <h3>{{ nurse.expertName }}</h3>
+    <p>Location: {{ nurse.location }}</p>
+    <button (click)="bookSlot(nurse)">Book a Slot</button>
+  </div>
+</div>

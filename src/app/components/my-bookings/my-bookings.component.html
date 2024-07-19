@@ -1,12 +1,10 @@
 <div class="bookings-container">
   <div *ngFor="let booking of paginatedBookings; let i = index" class="booking-card">
-    <h3>{{ booking.restaurantName }}</h3>
+    <h3>{{ booking.expertName }}</h3>
     <p>Creation Date: {{ booking.creationDate | date }}</p>
     <p>Booking Date: {{ booking.bookingDate | date }}</p>
-    <p>Number of People: {{ booking.numberOfPeople }}</p>
     <p>Time Slot: {{ booking.timeSlot }}</p>
-    <p>Status: <span class="status" [ngClass]="getStatusClass(booking.bookingStatus)">{{ booking.bookingStatus }}</span></p>
-    <button *ngIf="booking.bookingStatus === 'PENDING'" (click)="cancelBooking(booking)">Cancel</button>
+    <button (click)="cancelBooking(booking)">Cancel</button>
   </div>
 </div>
 

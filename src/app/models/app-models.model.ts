@@ -1,6 +1,6 @@
 export enum RoleType {
-  'CUSTOMER',
-  'MANAGER'
+  'DOCTOR',
+  'NURSE'
 }
 
 export interface UserDetails {
@@ -8,7 +8,6 @@ export interface UserDetails {
   emailId: string;
   password: string;
   phoneNumber: string;
-  role: RoleType
 }
 
 export interface SignUpResponse {
@@ -21,23 +20,19 @@ export interface SignInResponse {
   userName: string;
   userEmailId: string;
   jwtToken: string;
-  role : RoleType;
 }
 
 export interface BookingRequest {
-  restaurantId : number;
+  expertId : number;
   bookingDate: string;
-  numberOfPeople: number;
   timeSlot: string;
 }
 
-export interface Restaurant {
-  restaurantId: number;
-  restaurantName: string;
-  registrationDate: Date;
-  cuisines: string[];
+export interface Expert {
+  expertId: number;
+  expertName: string;
   location: string;
-  timeSlots: string[];
+  role: RoleType
 }
 
 export enum BookingStatus {
@@ -49,13 +44,11 @@ export enum BookingStatus {
 
 export interface UserBooking {
   bookingId: number;
-  restaurantName: string;
+  expertName: string;
   creationDate: Date;
   bookingDate: Date;
-  numberOfPeople: number;
   timeSlot: string;
   daysRemainingTillBooking: number;
-  bookingStatus: string;
 }
 
 export interface Reminder {
