@@ -28,7 +28,7 @@ import { NurseComponent } from '../nurse/nurse.component';
       DoctorComponent,
       MyBookingsComponent,
       FontAwesomeModule,
-      ChatComponent
+      ChatComponent,
       FontAwesomeModule,
       MedicationReminderComponent,
       CommunityComponent,
