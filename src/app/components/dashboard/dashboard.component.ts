@@ -2,6 +2,7 @@ import { Component, OnInit, isStandalone } from '@angular/core';
 import { Router } from '@angular/router';
 import { DoctorComponent } from "../doctor/doctor.component";
 import { MyBookingsComponent } from "../my-bookings/my-bookings.component";
+import { ChatComponent } from "../chat/chat.component";
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';
@@ -21,11 +22,13 @@ import { NurseComponent } from '../nurse/nurse.component';
     standalone: true,
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
-    
+
     imports: [
       CommonModule,
-      DoctorComponent, 
+      DoctorComponent,
       MyBookingsComponent,
+      FontAwesomeModule,
+      ChatComponent
       FontAwesomeModule,
       MedicationReminderComponent,
       CommunityComponent,
@@ -41,7 +44,7 @@ export class DashboardComponent {
   isCommunityActive: boolean = false;
   signOutIcon = faSignOut;
 
-  constructor(private router: Router, 
+  constructor(private router: Router,
     private jwtTokenService: JwtTokenService,
     private store: Store
   ) { }

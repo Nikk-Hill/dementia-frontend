@@ -1,0 +1,18 @@
+<!-- chat.component.html -->
+<div class="chat-container">
+    <div class="chat-header" (click)="toggleChat()">
+      Chat
+    </div>
+    <div class="chat-box" [ngClass]="{'open': isOpen}">
+      <div class="chat-history">
+        <div class = "chat-msg" *ngFor="let message of chatHistory">
+          <div class = "bot" *ngIf="message.type == 'bot'">{{ message.text }}</div>
+          <div class = "user" *ngIf="message.type == 'user'">{{ message.text }}</div>          
+          <button *ngIf="message.type === 'option'" (click)="handleSelection(message.text)">{{ message.text }}</button>
+        </div>
+      </div>
+      <input [(ngModel)]="userMessage" placeholder="Type your message" />
+      <button (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+  

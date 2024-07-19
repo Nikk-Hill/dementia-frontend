@@ -4,6 +4,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { DoctorComponent } from './components/doctor/doctor.component';
 import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
+import { ChatComponent } from './components/chat/chat.component';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MedicationReminderComponent } from './medication-reminder/medication-reminder.component';
@@ -58,6 +59,10 @@ export const routes: Routes = [
       {
         path: 'medicine-reminder',
         component: MedicationReminderComponent
+      },
+      {
+        path: 'chat',
+        component: ChatComponent
       },
       {
         path: 'community',
