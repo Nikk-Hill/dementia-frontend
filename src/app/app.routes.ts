@@ -4,6 +4,7 @@ import { SignUpComponent } from './components/sign-up/sign-up.component';
 import { SignInComponent } from './components/sign-in/sign-in.component';
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 import { MyBookingsComponent } from './components/my-bookings/my-bookings.component';
+import { ChatComponent } from './components/chat/chat.component';
 import { AuthGuard } from './auth.guard';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
@@ -40,6 +41,10 @@ export const routes: Routes = [
       {
         path: 'my-bookings',
         component: MyBookingsComponent
+      },
+      {
+        path: 'chat',
+        component: ChatComponent
       }
     ]
   },

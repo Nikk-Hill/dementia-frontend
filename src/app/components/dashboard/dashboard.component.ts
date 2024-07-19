@@ -2,6 +2,7 @@ import { Component, OnInit, isStandalone } from '@angular/core';
 import { Router } from '@angular/router';
 import { RestaurantComponent } from "../restaurant/restaurant.component";
 import { MyBookingsComponent } from "../my-bookings/my-bookings.component";
+import { ChatComponent } from "../chat/chat.component";
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faSignOut } from '@fortawesome/free-solid-svg-icons';
@@ -19,7 +20,8 @@ import { getAllRestaurantsStartedAction } from '../../store/actions/restaurant.a
       CommonModule,
       RestaurantComponent, 
       MyBookingsComponent,
-      FontAwesomeModule
+      FontAwesomeModule,
+      ChatComponent
     ]
 })
 export class DashboardComponent {
